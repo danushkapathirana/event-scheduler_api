@@ -3,6 +3,7 @@ const router = express.Router()
 
 const { getAll, get, add, replace, remove } = require("../data/event")
 const { isValidText, isValidDate, isValidImageUrl } = require("../utils/validation")
+const { checkAuth } = require("../utils/auth")
 
 router.get("/", async(req, res, next) => {
     try {
@@ -23,6 +24,8 @@ router.get("/:id", async(req, res, next) => {
         next(error)
     }
 })
+
+router.use(checkAuth)
 
 router.post("/", async(req, res, next) => {
     const data = req.body
