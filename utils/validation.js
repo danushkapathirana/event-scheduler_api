@@ -10,3 +10,7 @@ export const isValidDate = (value) => {
   const date = new Date(value);
   return value && date !== "Invalid Date.";
 };
+
+export const isValidEmail = (value) => {
+  return value && value.includes("@");
+};

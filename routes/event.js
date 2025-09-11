@@ -6,6 +6,7 @@ import {
   isValidImageUrl,
   isValidText,
 } from "../utils/validation.js";
+import { checkAuthMiddleware } from "../utils/auth.js";
 
 const router = express.Router();
 
@@ -26,6 +27,8 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+router.use(checkAuthMiddleware);
 
 router.post("/", async (req, res, next) => {
   let errors = {};
