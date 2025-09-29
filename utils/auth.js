@@ -1,9 +1,10 @@
-import { sign, verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { compare } from "bcryptjs";
 
 import { NotAuthError } from "./error.js";
 
 const KEY = "GciOiJIUzI";
+const { sign, verify } = jwt;
 
 export const createToken = (email) => {
   return sign({ email }, KEY, { expiresIn: "1h" });
